@@ -1,24 +1,28 @@
 
-	OutputPinWith1(FSS);//Altera Load SPI
-	OutputPinWith1(FMOSI);
-	InputPinWithPullUp(FMISO);
-	OutputPinWith1(FSCK);
-	
-	///PORT F - AD9889b I2C init bus
-	OutputPinWireAndWith1(SDAa);
-	OutputPinWireAndWith1(SCLa);
-	
-	OutputPinWith0(NRES);
-	
-	//Altera registers SPI
-	OutputPinWith1(SS1);
-	OutputPinWith1(MOSI);
-	InputPinWithPullUp(MISO);
-	OutputPinWith1(SCK);
+/* Порты для передачи данных между микроконтроллером и ПЛИС - шина SPI*/
+OutputPinWith1(FSS);//Altera Load SPI
+OutputPinWith1(FMOSI);
+InputPinWithPullUp(FMISO);
+OutputPinWith1(FSCK);
 
-	///PORT H
-	OutputPinWith0(NCONF);
-	InputPinWithZState(NSTAT);
-	OutputPinWith0(DCLK);
-	InputPinWithZState(CONFD);
+/* Порты для шины I2C - инициализация AD9889b */
+OutputPinWireAndWith1(SDAa);
+OutputPinWireAndWith1(SCLa);
 
+/* Порт сброса внутренней логики ПЛИС */
+OutputPinWith0(NRES);
+
+/* Порты для передачи данных между микроконтроллером и флэш памятью*/
+OutputPinWith1(SS1);
+OutputPinWith1(MOSI);
+InputPinWithPullUp(MISO);
+OutputPinWith1(SCK);
+
+/* Порты для загрузки ПЛИС по методу Passive Serial */
+OutputPinWith0(NCONF);
+InputPinWithZState(NSTAT);
+OutputPinWith0(DCLK);
+InputPinWithZState(CONFD);
+
+/* Порт сканирования роторного переключателя */
+InputPortWithPullUp(PORTB);//rotary switchs port
